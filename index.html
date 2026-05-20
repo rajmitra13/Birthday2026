@@ -578,6 +578,7 @@ button:hover{
 
 }
 
+
 </style>
 </head>
 
@@ -600,6 +601,7 @@ button:hover{
     <source src="birthday-song.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
+
 
 <!-- PAGE 1 -->
 <section id="page1" class="page active">
@@ -913,64 +915,55 @@ Specially chosen for my princess 👑✨
 const correctPasscode = "160603";
 
 function checkPasscode(){
-
-    const entered =
-    document.getElementById("passcode").value;
-
+    const entered = document.getElementById("passcode").value;
     if(entered === correctPasscode){
-
         playSong();
         showPage(2);
-
     }else{
-
         alert("Wrong Passcode 😢");
-
     }
 }
 
 function playSong(){
     const audio = document.getElementById("birthdaySong");
     if(!audio) return;
-
     audio.volume = 0.7;
-    audio.play().catch(() => {
-        // Autoplay may be blocked; the song will start when the user interacts with the page.
-    });
+    // best-effort autoplay; many mobile browsers block uninitiated audio
+    audio.play().catch(()=>{});
 }
 
-function startSongOnInteraction(){
-    const audio = document.getElementById("birthdaySong");
-    if(!audio) return;
-    if (!audio.paused) return;
-    audio.volume = 0.7;
-    audio.play().catch(() => {});
+function tryPlayRepeatedly(attempts = 6, interval = 1500){
+    let tries = 0;
+    const t = setInterval(()=>{
+        const audio = document.getElementById("birthdaySong");
+        if(!audio) return;
+        if(!audio.paused) { clearInterval(t); return; }
+        audio.play().catch(()=>{});
+        tries++;
+        if(tries >= attempts) clearInterval(t);
+    }, interval);
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("load", ()=>{
     playSong();
-    document.addEventListener("click", startSongOnInteraction, { once:true });
-    document.addEventListener("keydown", startSongOnInteraction, { once:true });
+    tryPlayRepeatedly();
+    // retry when page becomes visible again (some browsers allow after tab switch)
+    document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) playSong(); });
+    // also attempt to start on common user gestures (harmless if already started)
+    ['click','touchstart','keydown'].forEach(evt=>{
+        window.addEventListener(evt, ()=>{ playSong(); }, { once:true, passive:true });
+    });
 });
 
 function showPage(pageNumber){
-
-    const pages =
-    document.querySelectorAll(".page");
-
-    pages.forEach(page=>{
-        page.classList.remove("active");
-    });
-
-    document
-    .getElementById(`page${pageNumber}`)
-    .classList.add("active");
+    const pages = document.querySelectorAll(".page");
+    pages.forEach(page=>{ page.classList.remove("active"); });
+    const el = document.getElementById(`page${pageNumber}`);
+    if(el) el.classList.add("active");
 }
 
 function blowCandles(){
-    setTimeout(()=>{
-        showPage(6);
-    },10);
+    setTimeout(()=>{ showPage(6); },10);
 }
 
 </script>
