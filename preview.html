@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday My Love ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Comic Sans MS', cursive;
+}
+
+body{
+    background:linear-gradient(135deg,#ff6b9d,#ffc0cb,#ffda77,#ff85a2,#ffc0e3);
+    background-size:400% 400%;
+    animation:gradientShift 15s ease infinite;
+    min-height:100vh;
+    overflow-x:hidden;
+    color:white;
+}
+
+@keyframes gradientShift{
+    0%{
+        background-position:0% 50%;
+    }
+    50%{
+        background-position:100% 50%;
+    }
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+    animation:pageExit 0.6s ease-out forwards;
+}
+
+.active{
+    display:flex;
+    animation:pageEnter 0.6s ease-out forwards;
+}
+
+@keyframes pageEnter{
+    0%{
+        opacity:0;
+        transform:translateY(30px) scale(0.98);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes pageExit{
+    0%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+    100%{
+        opacity:0;
+        transform:translateY(-30px) scale(0.98);
+    }
+}
+
+.container{
+    max-width:900px;
+    animation:fadeInScale 0.8s ease-in-out;
+}
+
+@keyframes fadeInScale{
+    0%{
+        opacity:0;
+        transform:scale(0.95);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:20px;
+    text-shadow:3px 3px 6px rgba(0,0,0,0.3), 0 0 20px rgba(255,79,129,0.4);
+    animation:titlePulse 2s ease-in-out infinite;
+    letter-spacing:2px;
+    position:relative;
+}
+
+h1::before{
+    content:'✨';
+    position:absolute;
+    left:-50px;
+    animation:twinkle 1.5s ease-in-out infinite;
+}
+
+h1::after{
+    content:'✨';
+    position:absolute;
+    right:-50px;
+    animation:twinkle 1.5s ease-in-out infinite 0.75s;
+}
+
+@keyframes titlePulse{
+    0%,100%{
+        text-shadow:3px 3px 6px rgba(0,0,0,0.3), 0 0 20px rgba(255,79,129,0.4);
+    }
+    50%{
+        text-shadow:3px 3px 8px rgba(0,0,0,0.4), 0 0 30px rgba(255,79,129,0.6);
+    }
+}
+
+h2{
+    margin-top:20px;
+    text-shadow:2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.cute-text{
+    font-size:1.5rem;
+    margin:20px 0;
+    animation:textGlow 2s ease-in-out infinite;
+}
+
+@keyframes textGlow{
+    0%,100%{
+        text-shadow:0 0 10px rgba(255,255,255,0.4);
+    }
+    50%{
+        text-shadow:0 0 20px rgba(255,79,129,0.6);
+    }
+}
+
+.main-img{
+    width:280px;
+    height:280px;
+    object-fit:cover;
+    border-radius:25px;
+    border:8px solid white;
+    box-shadow:0 0 30px rgba(255,255,255,0.6), 0 0 60px rgba(255,79,129,0.4);
+    margin:20px 0;
+    animation:imageFloat 3s ease-in-out infinite;
+}
+
+@keyframes imageFloat{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px) rotate(0deg);
+    }
+    50%{
+        transform:translateY(-20px) rotate(2deg);
+    }
+}
+
+.side-img{
+    width:280px;
+    height:280px;
+    object-fit:cover;
+    border-radius:20px;
+    border:5px solid rgba(255,255,255,0.7);
+    box-shadow:0 10px 25px rgba(255,79,129,0.35);
+    transition:0.3s;
+}
+
+.side-img:hover{
+    transform:scale(1.05);
+}
+
+.handwritten{
+    font-family:'Brush Script MT','Bradley Hand', 'Comic Sans MS', cursive;
+    letter-spacing:1px;
+}
+
+.note-box{
+    background:rgba(255,255,255,0.12);
+    border:2px dashed rgba(255,255,255,0.35);
+    padding:25px;
+    border-radius:22px;
+    box-shadow:0 10px 30px rgba(255,79,129,0.2);
+    margin-top:25px;
+    backdrop-filter:blur(8px);
+}
+
+input{
+    padding:15px 20px;
+    width:250px;
+    border:3px solid white;
+    border-radius:22px;
+    font-size:1rem;
+    margin-top:20px;
+    background:rgba(255,255,255,0.9);
+    transition:0.3s;
+    font-weight:bold;
+    color:#ff4f81;
+}
+
+input:focus{
+    outline:none;
+    border:3px solid #ff1f68;
+    box-shadow:0 0 15px rgba(255,79,129,0.5);
+    background:white;
+}
+
+input::placeholder{
+    color:#ffb6c1;
+}
+
+button{
+    padding:15px 30px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#ff4f81,#ff1f68);
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+    margin-top:20px;
+    transition:0.3s;
+    font-weight:bold;
+    box-shadow:0 5px 15px rgba(255,79,129,0.4);
+    position:relative;
+    overflow:hidden;
+}
+
+button::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.2);
+    transition:0.5s;
+    z-index:-1;
+}
+
+button:hover::before{
+    left:100%;
+}
+
+button:hover{
+    transform:scale(1.15);
+    background:linear-gradient(135deg,#ff1f68,#ff4f81);
+    box-shadow:0 8px 25px rgba(255,79,129,0.6);
+}
+
+.emoji-row{
+    font-size:2.5rem;
+    margin-top:20px;
+    letter-spacing:10px;
+    animation:emojiWave 2s ease-in-out infinite;
+}
+
+@keyframes emojiWave{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+.big-emoji{
+    font-size:6rem;
+    cursor:pointer;
+    animation:bounce 1.5s infinite, pulse 2s ease-in-out infinite;
+    margin:30px 0;
+    display:inline-block;
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-25px);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.2);
+    }
+}
+
+@keyframes spin{
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes wiggle{
+    0%,100%{
+        transform:rotate(-5deg);
+    }
+    50%{
+        transform:rotate(5deg);
+    }
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:0.4;
+    }
+    50%{
+        opacity:1;
+    }
+}
+
+@keyframes shimmer{
+    0%{
+        background-position:-1000px 0;
+    }
+    100%{
+        background-position:1000px 0;
+    }
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+    25%{
+        transform:scale(1.3);
+    }
+    50%{
+        transform:scale(1);
+    }
+}
+
+@keyframes rotate360{
+    0%{
+        transform:rotate(0deg) scale(1);
+    }
+    100%{
+        transform:rotate(360deg) scale(1);
+    }
+}
+
+@keyframes jiggle{
+    0%,100%{
+        transform:translateX(0) rotate(0deg);
+    }
+    25%{
+        transform:translateX(5px) rotate(1deg);
+    }
+    75%{
+        transform:translateX(-5px) rotate(-1deg);
+    }
+}
+
+.button-group{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.gallery{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    margin-top:30px;
+}
+
+.gallery img{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:20px;
+    border:6px solid white;
+    transition:0.3s;
+    box-shadow:0 8px 25px rgba(255,79,129,0.4);
+}
+
+.gallery img:hover{
+    transform:scale(1.08) rotate(2deg);
+    box-shadow:0 15px 40px rgba(255,79,129,0.6);
+    animation:heartbeat 0.6s ease-in-out;
+}
+
+.gallery{
+    position:relative;
+}
+
+.gallery::before{
+    content:'💕 ❤️ 💖 🧸 🐼 💕 ❤️ 💖 🧸 🐼';
+    position:absolute;
+    top:-40px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:1.8rem;
+    animation:emojiWave 2s ease-in-out infinite;
+    letter-spacing:8px;
+    opacity:0.8;
+}
+
+.emoji-deco{
+    display:inline-block;
+    margin:0 5px;
+    animation:rotate360 3s linear infinite;
+}
+
+.love-text{
+    font-size:3rem;
+    animation:heartbeat 1s ease-in-out infinite;
+    display:inline-block;
+    margin:10px;
+}
+
+.gift-options{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.gift-card{
+    width:220px;
+    height:220px;
+    background:linear-gradient(135deg,rgba(255,79,129,0.3),rgba(255,192,203,0.3));
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:5rem;
+    border:4px solid rgba(255,255,255,0.5);
+    animation:float 3s ease-in-out infinite;
+    box-shadow:0 8px 20px rgba(255,79,129,0.3);
+}
+
+.gift-card:hover{
+    transform:translateY(-15px) scale(1.05);
+    background:linear-gradient(135deg,rgba(255,79,129,0.5),rgba(255,192,203,0.5));
+    box-shadow:0 15px 35px rgba(255,79,129,0.5);
+    border:4px solid rgba(255,255,255,0.8);
+}
+
+.gift-card h3{
+    font-size:1.2rem;
+    margin-top:10px;
+    text-shadow:2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.message-box{
+    background:linear-gradient(135deg,rgba(255,79,129,0.25),rgba(255,192,203,0.25));
+    padding:40px;
+    border-radius:25px;
+    margin-top:30px;
+    line-height:2.2;
+    font-size:1.3rem;
+    border:4px solid rgba(255,255,255,0.4);
+    box-shadow:0 8px 30px rgba(255,79,129,0.3);
+    backdrop-filter:blur(10px);
+    text-shadow:1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.cake{
+    font-size:5rem;
+    margin:40px 0;
+    animation:cakeBounce 2s ease-in-out infinite;
+    display:inline-block;
+}
+
+@keyframes cakeBounce{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.1);
+    }
+}
+
+.cake-body{
+    font-size:8rem;
+    display:inline;
+}
+
+.floating-hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    opacity:0.7;
+}
+
+.heart-fall{
+    animation:floatDown 10s linear infinite;
+}
+
+.heart-fall.fast{
+    animation:floatDown 8s linear infinite;
+}
+
+.heart-fall.slow{
+    animation:floatDown 15s linear infinite;
+}
+
+@keyframes floatDown{
+    from{
+        transform:translateY(-50px) rotate(0deg);
+        opacity:0.8;
+    }
+    to{
+        transform:translateY(100vh) rotate(360deg);
+        opacity:0.1;
+    }
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2rem;
+    }
+
+    .main-img,
+    .side-img{
+        width:220px;
+        height:220px;
+    }
+
+    .gallery img{
+        width:150px;
+        height:150px;
+    }
+
+    .gift-card{
+        width:150px;
+        height:150px;
+        font-size:3rem;
+    }
+
+    .emoji-row{
+        font-size:1.8rem;
+        letter-spacing:5px;
+    }
+
+    button{
+        padding:12px 25px;
+        font-size:0.9rem;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="floating-hearts">
+    <div class="heart heart-fall" style="left:5%;font-size:35px;animation-delay:0s;">💖</div>
+    <div class="heart heart-fall" style="left:15%;font-size:28px;animation-delay:1s;">💕</div>
+    <div class="heart heart-fall" style="left:25%;font-size:40px;animation-delay:2s;">🧸</div>
+    <div class="heart heart-fall" style="left:35%;font-size:32px;animation-delay:1.5s;">💗</div>
+    <div class="heart heart-fall" style="left:45%;font-size:38px;animation-delay:2.5s;">🐼</div>
+    <div class="heart heart-fall fast" style="left:55%;font-size:30px;animation-delay:0.5s;">💞</div>
+    <div class="heart heart-fall" style="left:65%;font-size:35px;animation-delay:1.2s;">🐨</div>
+    <div class="heart heart-fall" style="left:75%;font-size:36px;animation-delay:2.2s;">💘</div>
+    <div class="heart heart-fall slow" style="left:85%;font-size:32px;animation-delay:0.8s;">🧸</div>
+    <div class="heart heart-fall" style="left:95%;font-size:28px;animation-delay:1.8s;">🐼</div>
+</div>
+
+<!-- PAGE 1 -->
+<section id="page1" class="page active">
+<div class="container">
+
+<div style="font-size:3rem; margin-bottom:20px; letter-spacing:10px; animation:emojiWave 2s ease-in-out infinite;">
+🧸 💕 🐼 💕 🧸
+</div>
+
+<h1>💖 Welcome My Princess 💖</h1>
+
+<img src="images/her1.jpg" class="main-img">
+
+<p class="cute-text">
+Enter the secret passcode 💌✨
+</p>
+
+<input type="password" id="passcode" placeholder="Enter Passcode">
+
+<br>
+
+<button onclick="checkPasscode()">Open ❤️</button>
+
+<div class="emoji-row">
+🧸 💕 🌸 🎀 💖 🥰 🐼 🌹
+</div>
+
+</div>
+</section>
+
+<!-- PAGE 2 -->
+<section id="page2" class="page">
+<div class="container">
+
+<h1>🎉 Congratulations 🎉</h1>
+
+<h2>Today is Your Day My Love ❤️✨</h2>
+
+<div style="display:flex; justify-content:center; flex-wrap:wrap; gap:20px; margin-top:20px; align-items:center;">
+    <img src="images/her2.jpg" class="side-img">
+    <img src="images/her3.jpg" class="side-img">
+</div>
+
+<div class="emoji-row">
+🧸 💕 🌹 ✨ 🎂 💖 🐼 🥳 🎁
+</div>
+
+<p class="cute-text">
+Click the teddy bear 🧸 to continue
+</p>
+
+<div class="big-emoji" onclick="showPage(3)">
+🧸
+</div>
+
+</div>
+</section>
+
+<!-- PAGE 3 -->
+<section id="page3" class="page">
+<div class="container">
+
+<h1>🎂 Happy Birthday 🎂</h1>
+
+<div style="display:flex; justify-content:center; align-items:center; gap:20px; flex-wrap:wrap; margin:20px 0;">
+    <img src="images/her4.jpg" class="side-img">
+    <div class="big-emoji" style="font-size:7rem; margin:0 20px;">🎂</div>
+    <img src="images/her5.jpg" class="side-img">
+</div>
+
+<p class="cute-text">
+Do you wanna open your gift? 💝✨ 🎁
+</p>
+
+<div class="button-group">
+<button onclick="showPage(5)">YES 💖</button>
+<button onclick="showPage(4)">NO 😢</button>
+</div>
+
+</div>
+</section>
+
+<!-- PAGE 4 -->
+<section id="page4" class="page">
+<div class="container">
+
+<h1>😭 Pretty Please 😭</h1>
+
+<p class="cute-text">
+Please try again my love 💕✨🥺
+</p>
+
+<div class="big-emoji">🥺</div>
+
+<button onclick="showPage(3)">
+Try Again 💖
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 5 -->
+<section id="page5" class="page">
+<div class="container">
+
+<h1>🎂 Make A Wish 🎂✨</h1>
+
+<div style="display:flex; justify-content:center; align-items:center; gap:20px; flex-wrap:wrap; margin:30px 0;">
+    <img src="images/her6.jpg" class="side-img">
+    <div class="cake">
+        <div class="cake-body">🎂</div>
+    </div>
+    <img src="images/her7.jpg" class="side-img">
+</div>
+
+<p class="cute-text">
+🧸 Blow the candles to continue 🐼
+</p>
+
+<button onclick="blowCandles()">
+Blow Candles 💨
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 6 -->
+<section id="page6" class="page">
+<div class="container">
+
+<h1>💖 Happy Birthday My Love 💖 ✨</h1>
+
+<div class="gallery">
+<img src="images/her8.jpg">
+<img src="images/her9.jpg">
+<img src="images/her10.jpg">
+</div>
+
+<button onclick="showPage(7)">
+Next ➡️ 🎁
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 7 -->
+<section id="page7" class="page">
+<div class="container">
+
+<h1>🎁 These Are For You 🎁✨</h1>
+
+<p class="cute-text">
+Choose One To Open 💖 🧸 🐼
+</p>
+
+<div class="gift-options">
+
+<div class="gift-card" onclick="showPage(8)">
+📸
+<h3>Album</h3>
+</div>
+
+<div class="gift-card" onclick="showPage(9)">
+💌
+<h3>Messages</h3>
+</div>
+
+<div class="gift-card" onclick="showPage(10)">
+🎁
+<h3>Secret Gift</h3>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- PAGE 8 -->
+<section id="page8" class="page">
+<div class="container">
+
+<h1>📸 Our Memories 📸 💕 ✨</h1>
+
+<div style="font-size:2.5rem; margin:20px 0; letter-spacing:5px; animation:emojiWave 2s ease-in-out infinite;">
+🧸 💖 🐼 💕 🧸 💖 🐼 💕
+</div>
+
+<div class="gallery">
+<img src="images/us1.jpg" style="animation:float 3s ease-in-out infinite 0.3s;">
+<img src="images/us2.jpg" style="animation:float 3s ease-in-out infinite 0.3s;">
+<img src="images/us3.jpg" style="animation:float 3s ease-in-out infinite 0.6s;">
+<img src="images/us4.jpg" style="animation:float 3s ease-in-out infinite 0.9s;">
+<img src="images/us5.jpg" style="animation:float 3s ease-in-out infinite 1.2s;">
+<img src="images/us6.jpg" style="animation:float 3s ease-in-out infinite 1.5s;">
+<img src="images/us7.jpg" style="animation:float 3s ease-in-out infinite 1.8s;">
+<img src="images/us8.jpg" style="animation:float 3s ease-in-out infinite 2.1s;">
+<img src="images/us9.jpg" style="animation:float 3s ease-in-out infinite 2.4s;">
+</div>
+
+<div style="font-size:2rem; margin:30px 0; animation:wiggle 2s ease-in-out infinite;" class="handwritten">
+💕 Our beautiful moments together 💕
+</div>
+
+<div class="note-box handwritten">
+    Every smile, every hug, every little adventure with you feels like a warm story written just for us.
+</div>
+
+<div style="font-size:1.8rem; margin:20px 0; letter-spacing:4px; animation:emojiWave 2s ease-in-out infinite;">
+🧸 💌 🐼 ❣️ 🧸 💌 🐼 ❣️
+</div>
+
+<div style="background:rgba(255,192,203,0.2); padding:25px; border-radius:20px; margin:25px 0; border:3px solid rgba(255,255,255,0.4); backdrop-filter:blur(10px);">
+
+<p style="font-size:1.4rem; margin:10px 0; animation:textGlow 2s ease-in-out infinite;">
+🎀 Every moment with you is precious 🎀
+</p>
+
+<p style="font-size:1.3rem; margin:10px 0;color:#fff;">
+💖 These memories are my most treasured possessions 💖
+</p>
+
+<p style="font-size:1.3rem; margin:10px 0;">
+🧸 Forever grateful for you my love 🐼
+</p>
+
+</div>
+
+<div style="font-size:3rem; margin:20px 0; animation:heartbeat 1.2s ease-in-out infinite;">
+💕 😍 💕 😍 💕
+</div>
+
+<button onclick="showPage(7)" style="margin-top:30px;">
+⬅️ Go Back
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 9 -->
+<section id="page9" class="page">
+<div class="container">
+
+<h1>💌 Birthday Messages 💌 ✨</h1>
+
+<div class="message-box handwritten">
+
+<p>
+🧸 Happy Birthday to the most beautiful girl in my life ❤️
+</p>
+
+<p>
+🐼 You make every day shine brighter than the stars 💖
+</p>
+
+<p>
+🎀 I love you forever and always, in every little moment 🥰
+</p>
+
+<p>
+🌸 Thank you for being my happiness, my calm, my light 🌹
+</p>
+
+</div>
+
+<div class="note-box handwritten">
+    You are my sweetest dream come true, and I hope this day feels as magical as you make every day feel.
+</div>
+
+<div class="gallery">
+<img src="images/us10.jpg">
+<img src="images/her11.jpg">
+<img src="images/us11.jpg">
+</div>
+
+<button onclick="showPage(7)">
+⬅️ Go Back
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 10 -->
+<section id="page10" class="page">
+<div class="container">
+
+<h1>🎁 Your Gifts 🎁 ✨ 💝</h1>
+
+<div class="gallery">
+<img src="images/gift1.jpg">
+<img src="images/gift2.jpg">
+<img src="images/gift3.jpg">
+</div>
+
+<h2>
+🧸 I Hope You Love Them 💖 🐼
+</h2>
+
+<p class="cute-text">
+Specially chosen for my princess 👑✨
+</p>
+
+<button onclick="showPage(7)">
+⬅️ Go Back
+</button>
+
+</div>
+</section>
+
+<script>
+
+const correctPasscode = "160603";
+
+function checkPasscode(){
+
+    const entered =
+    document.getElementById("passcode").value;
+
+    if(entered === correctPasscode){
+
+        showPage(2);
+
+    }else{
+
+        alert("Wrong Passcode 😢");
+
+    }
+}
+
+function showPage(pageNumber){
+
+    const pages =
+    document.querySelectorAll(".page");
+
+    pages.forEach(page=>{
+        page.classList.remove("active");
+    });
+
+    document
+    .getElementById(`page${pageNumber}`)
+    .classList.add("active");
+}
+
+function blowCandles(){
+    setTimeout(()=>{
+        showPage(6);
+    },10);
+}
+
+</script>
+
+</body>
+</html>
